@@ -12,7 +12,13 @@ module FormsLab
     
     get '/new' do 
       
-      
+      @pirate = Pirate.new(params[:student])
+ 
+      params[:student][:courses].each do |details|
+        Course.new(details)
+      end
+     
+      @courses = Course.all
       
       erb '/pirates/new'
       
